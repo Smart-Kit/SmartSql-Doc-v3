@@ -1,26 +1,26 @@
 # Installation
 
-## 安装 XML Schema File 文件获得智能提示
+## Install the XML Schema File file for smart tips
 
-![智能提示](../imgs/intellisense.png)
+![Smart reminder](../imgs/intellisense.png)
 
-下载以下俩个文件至 Microsoft Visual Studio XSD安装目录
+Download the following two files to the Microsoft Visual Studio XSD installation directory
 
-> VS2017目录地址：\Microsoft Visual Studio\2017\Enterprise\Xml\Schemas
+> VS2017 directory address: \Microsoft Visual Studio\2017\Enterprise\Xml\Schemas
 
-| 文件      |   地址   |
-| --------  | -----:  |
-| SmartSqlMapConfig.xsd  | [SmartSqlMapConfig.xsd](https://raw.githubusercontent.com/Ahoo-Wang/SmartSql/master/doc/Schemas/SmartSqlMapConfig.xsd) |
-| SmartSqlMap.xsd        |   [SmartSqlMap.xsd](https://raw.githubusercontent.com/Ahoo-Wang/SmartSql/master/doc/Schemas/SmartSqlMap.xsd)   |
+| File | Address |
+| -------- | -----: |
+| SmartSqlMapConfig.xsd | [SmartSqlMapConfig.xsd](https://raw.githubusercontent.com/Ahoo-Wang/SmartSql/master/doc/Schemas/SmartSqlMapConfig.xsd) |
+SmartSqlMap.xsd | [SmartSqlMap.xsd](https://raw.githubusercontent.com/Ahoo-Wang/SmartSql/master/doc/Schemas/SmartSqlMap.xsd) |
 
-## 安装 SmartSql & 相应的Db驱动，这里以MySql为例
+## Install SmartSql & the corresponding Db driver, here is MySql as an example
 
 ``` chsarp
 Install-Package SmartSql
 Install-Package MySql.Data
 ```
 
-## SmartSqlMapConfig.xml 模板
+## SmartSqlMapConfig.xml template
 
 ``` xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -42,7 +42,7 @@ Install-Package MySql.Data
 </SmartSqlMapConfig>
 ```
 
-## SmartSqlMap.xml 模板
+## SmartSqlMap.xml template
 
 ``` xml
 <?xml version="1.0" encoding="utf-8" ?>

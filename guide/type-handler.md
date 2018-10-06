@@ -1,33 +1,33 @@
 # SmartSql.TypeHandler
 
-## Nuget 安装
+## Nuget Installation
 
 ``` cmd
 Install-Package SmartSql.TypeHandler -Version 3.0.1
 ```
 
-SmartSql.TypeHandler 包括了俩种类型的类型处理程序: JsonTypeHandler & XmlTypeHandler，当字段类型需要序列化成Json或Xml场景时可使用以下配置,即可将Data属性序列化成Json字符串存储到DB：
+SmartSql.TypeHandler includes two types of type handlers: JsonTypeHandler & XmlTypeHandler. When the field type needs to be serialized into a Json or Xml scene, you can use the following configuration to serialize the Data property into a Json string and store it in the DB:
 
-### SmartSqlMapConfig 子元素
+### SmartSqlMapConfig child element
 
 ``` xml
-  <TypeHandlers>
-    <TypeHandler Name="Json" Type="SmartSql.TypeHandler.JsonTypeHandler,SmartSql.TypeHandler"/>
-    <TypeHandler Name="Xml" Type="SmartSql.TypeHandler.XmlTypeHandler,SmartSql.TypeHandler"/>
-  </TypeHandlers>
+   <TypeHandlers>
+     <TypeHandler Name="Json" Type="SmartSql.TypeHandler.JsonTypeHandler,SmartSql.TypeHandler"/>
+     <TypeHandler Name="Xml" Type="SmartSql.TypeHandler.XmlTypeHandler,SmartSql.TypeHandler"/>
+   </TypeHandlers>
 ```
 
-### SmartSqlMap 子元素
+### SmartSqlMap Child Elements
 
 ``` xml
-  <ResultMaps>
-    <ResultMap Id="ExtendedDataResult">
-      <Result Property="Data" Column="Data" TypeHandler="Json"/>
-    </ResultMap>
-  </ResultMaps>
-  <ParameterMaps>
-    <ParameterMap Id="ExtendedDataParameter">
-      <Parameter Property="Data" TypeHandler="Json"/>
-    </ParameterMap>
-  </ParameterMaps>
+   <ResultMaps>
+     <ResultMap Id="ExtendedDataResult">
+       <Result Property="Data" Column="Data" TypeHandler="Json"/>
+     </ResultMap>
+   </ResultMaps>
+   <ParameterMaps>
+     <ParameterMap Id="ExtendedDataParameter">
+       <Parameter Property="Data" TypeHandler="Json"/>
+     </ParameterMap>
+   </ParameterMaps>
 ```

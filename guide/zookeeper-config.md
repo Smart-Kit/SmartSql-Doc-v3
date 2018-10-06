@@ -1,6 +1,6 @@
-# Zookeeper 分布式配置
+# Zookeeper Distributed Configuration
 
-## 安装 SmartSql.ZooKeeperConfig
+## Install SmartSql.ZooKeeperConfig
 
 ``` chsarp
 Install-Package SmartSql.ZooKeeperConfig
@@ -9,18 +9,18 @@ Install-Package SmartSql.ZooKeeperConfig
 ## Demo
 
 ``` csharp
-            string connStr = "192.168.31.103:2181";
-            var configLoader = new ZooKeeperConfigLoader(connStr);
-            string configPath = "/Config/App1/SmartSqlMapConfig.xml";
-            var sqlMapper = new SmartSqlMapper(configPath, configLoader);
-            var list = sqlMapper.Query<T_Test>(new RequestContext
-            {
-                Scope = "T_Test",
-                SqlId = "GetList",
-                Request = new { Ids = new long[] { 1, 2, 3, 4 } }
-            });
+             String connStr = "192.168.31.103:2181";
+             Var configLoader = new ZooKeeperConfigLoader(connStr);
+             String configPath = "/Config/App1/SmartSqlMapConfig.xml";
+             Var sqlMapper = new SmartSqlMapper(configPath, configLoader);
+             Var list = sqlMapper.Query<T_Test>(new RequestContext
+             {
+                 Scope = "T_Test",
+                 SqlId = "GetList",
+                 Request = new { Ids = new long[] { 1, 2, 3, 4 } }
+             });
 ```
 
-## 工具使用 [ZooKeeper-Admin](https://github.com/Ahoo-Wang/ZooKeeper-Admin)
+## Tools use [ZooKeeper-Admin](https://github.com/Ahoo-Wang/ZooKeeper-Admin)
 
 ![ZooKeeper-Admin](../imgs/zookeeper-config.png)

@@ -1,20 +1,20 @@
-# 快速使用
+# Quick use
 
-## ISmartSqlMapper 常用(部分)接口概述
+## ISmartSqlMapper Common (Partial) Interface Overview
 
-| 函数           |    说明   |
-| :---------     | --------:|
-| Execute  |  IDbCommand.ExecuteNonQuery，执行返回受影响行数 |
-| ExecuteScalar  | IDbCommand.ExecuteScalar,执行并返回查询返回的ReultSet中第一行的第一列  |
-| Query  | 执行返回实体列表 |
-| QuerySingle  | 执行返回单个实体 |
-| GetDataTable  | 执行返回DataTable |
-| GetDataSet  | 执行返回DataSet |
-| BeginTransaction  | 开启事务 |
-| CommitTransaction  | 提交事务 |
-| RollbackTransaction  | 回滚事务 |
+| Function | Description |
+| :--------- | --------:|
+Execute | IDbCommand.ExecuteNonQuery, execution returns the number of affected rows |
+ExecuteScalar | IDbCommand.ExecuteScalar, execute and return the first column of the first row in the ReultSet returned by the query |
+| Query | Execution Returns Entity List |
+| QuerySingle | Execution returns a single entity |
+| GetDataTable | Execute returns DataTable |
+| GetDataSet | Execute returns DataSet |
+| BeginTransaction | Open transaction |
+| CommitTransaction | Submit a transaction |
+| RollbackTransaction | Rollback Transaction |
 
-## 新增
+## Insert
 
 ### Statement
 
@@ -36,7 +36,7 @@
     </Statement>
 ```
 
-### 返回主键
+### Return primary key
 
 ``` csharp
 
@@ -55,7 +55,7 @@
             });
 ```
 
-### 新增返回受影响行数
+### Return number of affected rows
 
 ``` csharp
             SqlMapper.Execute(new RequestContext
@@ -72,7 +72,7 @@
             });
 ```
 
-## 删除
+## Delete
 
 ``` xml
     <Statement Id="Delete">
@@ -90,7 +90,7 @@
             });
 ```
 
-## 更新
+## Update
 
 ### Statement.Update
 
@@ -118,7 +118,7 @@
     </Statement>
 ```
 
-### 全量更新
+### Full update
 
 ``` csharp
             SqlMapper.Execute(new RequestContext
@@ -136,7 +136,7 @@
             });
 ```
 
-### 局部更新
+### Partial update
 
 ``` csharp
             SqlMapper.Execute(new RequestContext
@@ -147,7 +147,7 @@
             });
 ```
 
-## 查询 返回List
+## Query return List
 
 ``` xml
 <Statement Id="Query">
@@ -182,7 +182,7 @@
 
 ```
 
-## 查询 返回单个实体
+## Query returns a single entity
 
 ``` xml
     <Statement Id="GetEntity">
@@ -205,7 +205,7 @@
             });
 ```
 
-## 事务
+## Transaction
 
 ``` csharp
             try
@@ -221,7 +221,7 @@
             }
 ```
 
-## 存储过程
+## Stored procedure
 
 ``` csharp
             DbParameterCollection dbParameterCollection = new DbParameterCollection();

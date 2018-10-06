@@ -1,12 +1,12 @@
-# Redis 分布式缓存
+# Redis Distributed Cache
 
-## 安装 SmartSql.Cache.Redis
+## Install SmartSql.Cache.Redis
 
 ``` chsarp
 Install-Package SmartSql.Cache.Redis
 ```
 
-## Cache 配置
+## Cache Configuration
 
 ``` xml
 <Cache Id="T_Test.RedisCache" Type="SmartSql.Cache.Redis.RedisCacheProvider,SmartSql.Cache.Redis">
