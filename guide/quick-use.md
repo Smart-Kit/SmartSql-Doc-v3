@@ -4,8 +4,8 @@
 
 | Function | Description |
 | :--------- | --------:|
-Execute | IDbCommand.ExecuteNonQuery, execution returns the number of affected rows |
-ExecuteScalar | IDbCommand.ExecuteScalar, execute and return the first column of the first row in the ReultSet returned by the query |
+| Execute | IDbCommand.ExecuteNonQuery, execution returns the number of affected rows |
+| ExecuteScalar | IDbCommand.ExecuteScalar, execute and return the first column of the first row in the ReultSet returned by the query |
 | Query | Execution Returns Entity List |
 | QuerySingle | Execution returns a single entity |
 | GetDataTable | Execute returns DataTable |
