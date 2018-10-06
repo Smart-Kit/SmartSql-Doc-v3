@@ -1,4 +1,4 @@
-# SmartSql 更新历史记录
+# SmartSql Update history
 
 ## 3.7.0
 

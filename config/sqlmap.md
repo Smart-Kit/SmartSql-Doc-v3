@@ -1,152 +1,152 @@
 # SmartSqlMap
 
-| 属性       |    说明   |
+| Attribute | Description |
 | :--------- | --------:|
-| Scope    | 域,用于SqlMap定义Sql声明范围  |
+| Scope | Domain for SqlMap definition Sql declaration scope |
 
 ## ResultMap
 
 ``` xml
-    <ResultMap Id="UserExtendResultMap">
-      <Result Column="Data" Property="Info" TypeHandler="Json"/>
-    </ResultMap>
+    <ResultMap Id="UserExtendResultMap">
+      <Result Column="Data" Property="Info" TypeHandler="Json"/>
+    </ResultMap>
 ```
 
-| 属性       |    说明   |
+| Attribute | Description |
 | :--------- | --------:|
-| Id    | 唯一性编号  |
+| Id | Uniqueness Number |
 
 ### ResultMap.Result
 
-| 属性       |    说明   |
+| Attribute | Description |
 | :--------- | --------:|
-| Column    | 列名  |
-| Property    | 属性名  |
-| TypeHandler    | 类型处理器，内置（Json/Xml）  |
+| Column | Column Name |
+| Property | Property Name |
+| TypeHandler | Type processor, built-in (Json/Xml) |
 
 ## ParameterMap
 
 ``` xml
-    <ParameterMap Id="UserExtendParameterMap">
-      <Parameter Property="Info" TypeHandler="Json"/>
-    </ParameterMap>
+    <ParameterMap Id="UserExtendParameterMap">
+      <Parameter Property="Info" TypeHandler="Json"/>
+    </ParameterMap>
 ```
 
-| 属性       |    说明   |
+| Attribute | Description |
 | :--------- | --------:|
-| Id    | 唯一性编号  |
+| Id | Uniqueness Number |
 
 ### ParameterMap.Parameter
 
-| 属性       |    说明   |
+| Attribute | Description |
 | :--------- | --------:|
-| Property    | 属性名  |
-| TypeHandler    | 类型处理器，内置（Json/Xml）  |
+| Property | Property Name |
+| TypeHandler | Type processor, built-in (Json/Xml) |
 
 ## MultipleResultMap
 
 ``` xml
-    <MultipleResultMap Id="QueryByPage_Map">
-      <Result  Property="Total"/>
-      <Result  Property="List"/>
-    </MultipleResultMap>
+    <MultipleResultMap Id="QueryByPage_Map">
+      <Result Property="Total"/>
+      <Result Property="List"/>
+    </MultipleResultMap>
 ```
 
 ``` csharp
-    public class QueryByPageResponse
-    {
-        public int Total { get; set; }
-        public IEnumerable<T_Entity> List { get; set; }
-    }
+    Public class QueryByPageResponse
+    {
+        Public int Total { get; set; }
+        Public IEnumerable<T_Entity> List { get; set; }
+    }
 ```
 
-| 属性       |    说明   |
+| Attribute | Description |
 | :--------- | --------:|
-| Id    | 唯一性编号  |
+| Id | Uniqueness Number |
 
 ### MultipleResultMap.Result
 
-| 属性       |    说明   |
+| Attribute | Description |
 | :--------- | --------:|
-| Property    | 属性  |
+| Property | Attributes |
 
-## Statement标签
+## Statement tag
 
-| 属性       |    说明   |
+| Attribute | Description |
 | :--------- | --------:|
-| Id    | 唯一性编号  |
-| Cache    | 缓存策略编号,引用自Cache标签  |
-| CommandType    | Text/StoredProcedure , Default:Text |
-| SourceChoice    | Unknow/Write/Read , Default:Unknow  |
-| ResultMap    |  ResultMap.Id 用于结果映射，列表VS属性名映射，以及字段类型处理器处理 |
-| ParameterMap    |  ParameterMap.Id |
-| MultipleResultMap    | MultipleResultMap.Id，用于返回多结果集映射  |
+| Id | Uniqueness Number |
+Cache | Cache policy number, referenced from Cache tag |
+| CommandType | Text/StoredProcedure , Default:Text |
+SourceChoice | Unknow/Write/Read , Default:Unknow |
+ResultMap | ResultMap.Id for result mapping, list VS attribute name mapping, and field type processor processing |
+| ParameterMap | ParameterMap.Id |
+MultipleResultMap | MultipleResultMap.Id to return multiple result set mappings |
 
-## Statement 筛选子标签
+## Statement Filter subtab
 
-| 标签           |    真条件   |
-| :---------     | --------:|
-| IsEmpty        | null or 空字符串 or 空IEnumerable |
-| IsEqual        | 与比较值相等 |
-| IsFalse        | 参数为 false  |
-| IsGreaterEqual | 参数大于等于比较值     |
-| IsGreaterThan  | 参数大于比较值        |
-| IsLessEqual    | 参数小于等于比较值    |
-| IsLessThan     | 参数小于比较值        |
-| IsNotEmpty     | !(null or 空字符串 or 空IEnumerable)         |
-| IsNotEqual     | 参数不等于比较值    |
-| IsNotNull      | 参数不等于 null  |
-| IsNull         | 参数等于 null    |
-| IsProperty     | 查询对象包含属性名 |
-| IsTrue         | 参数为 true         |
-| Switch         | Switch 标签      |
-| Case           | Switch标签的子标签,等于比较值 |
-| Defalut        | Switch标签的子标签,未命中任何Case子标签时命中此标签  |
-
-## Statement 其他子标签
-
-| 标签       |    说明   |
+| Tags | Real Conditions |
 | :--------- | --------:|
-| Env        | 用于判断全局变量 DbProvider |
-| Include    | 引用外部Statement     |
-| Dynamic    | 动态标签,用于包裹筛选标签,匹配的第一个筛选标签的前缀将忽略 |
-| For        | 用于参数为IEnumerable,遍历参数动态拼接Sql |
-| Where      | 继承至Dynamic,用于包裹筛选标签,匹配的第一个筛选标签前缀被忽略,并添加 Where 前缀|
-| Set      | 继承至Dynamic,用于Update,包裹筛选标签,匹配的第一个筛选标签前缀被忽略,并添加 Set 前缀,必须匹配至少一个子标签，否则将抛出SmartSqlException异常。|
-| Placeholder    | 占位符标签，用于替换参数键值 |
+IsEmpty | null or empty string or empty IEnumerable |
+| IsEqual | Equal to comparison value |
+| IsFalse | The parameter is false |
+| IsGreaterEqual | Parameter is greater than or equal to comparison value |
+| IsGreaterThan | Parameter is greater than comparison value |
+| IsLessEqual | Parameter is less than or equal to comparison value |
+| IsLessThan | Parameter is less than comparison value |
+| IsNotEmpty | !(null or empty string or empty IEnumerable) |
+| IsNotEqual | Parameter is not equal to comparison value |
+| IsNotNull | Parameter is not equal to null |
+| IsNull | Parameters equal to null |
+| IsProperty | Query Object Contains Attribute Name |
+| IsTrue | The parameter is true |
+| Switch | Switch Tags |
+| Case | Sub-label of the Switch tag, equal to the comparison value |
+Defalut | Subtag of the Switch tag, hitting this tag when any Case subtag is missed |
 
-## Cache 标签
+## Statement Other subtags
 
-| 属性       |    说明   |
+| Label | Description |
 | :--------- | --------:|
-| Id    | 唯一性标号  |
-| Type   | Cache类型继承自ICacheProvider,内置常量:Lru 最近最少使用算法,内存缓存, Fifo 先进先出算法,其他继承自ICacheProvider缓存类型均可,例: Type="SmartSql.Cache.Redis.RedisCacheProvider,SmartSql.Cache.Redis" |
+| Env | Used to determine global variables DbProvider |
+| Include | Reference External Statement |
+Dynamic | Dynamic tags for wrapping filter tags, the prefix of the first filtered tag matched will be ignored |
+| For | For parameters IEnumerable, traversal parameters dynamic splicing Sql |
+Where | Inherit to Dynamic for wrapping filter tags, matching the first filter tag prefix is ​​ignored, and adding the Where prefix |
+| Set | Inherit to Dynamic for Update, parcel filter tag, match the first filter tag prefix is ​​ignored, add the Set prefix, must match at least one subtag, otherwise a SmartSqlException will be thrown. |
+| Placeholder | Placeholder tag to replace parameter key values ​​|
 
-### Cache 子标签
+## Cache tag
 
-| 标签           |    说明   |
-| :---------     | --------:|
-| FlushInterval  | 定时刷新策略 |
-| FlushOnExecute | 事件触发策略 |
-| Parameter | 作为 ICacheProvider 初始化参数  |
+| Attribute | Description |
+| :--------- | --------:|
+| Id | Uniqueness Label |
+Type | Cache type inherits from ICacheProvider, built-in constants: Lru least recently used algorithm, memory cache, Fifo FIFO algorithm, other inheritance from ICacheProvider cache type, for example: Type="SmartSql.Cache.Redis.RedisCacheProvider, SmartSql .Cache.Redis" |
+
+### Cache subtab
+
+| Label | Description |
+| :--------- | --------:|
+| FlushInterval | Timed Refresh Strategy |
+| FlushOnExecute | Event Triggering Strategy |
+| Parameter | As ICacheProvider initialization parameter |
 
 ### FlushInterval
 
-| 属性       |    说明   |
+| Attribute | Description |
 | :--------- | --------:|
-| Hours    | 时  |
-| Minutes   | 分 |
-| Seconds   | 秒 |
+| Hours | When |
+| Minutes | Points |
+| Seconds | Seconds |
 
 ### FlushOnExecute
 
-| 属性       |    说明   |
+| Attribute | Description |
 | :--------- | --------:|
-| Statement    | 触发刷新缓存的声明  |
+| Statement | Statement that triggers a refresh cache |
 
 ### Parameter
 
-| 属性       |    说明   |
+| Attribute | Description |
 | :--------- | --------:|
-| Key    | 键  |
-| Value    | 值  |
+| Key | Key |
+| Value | Value |

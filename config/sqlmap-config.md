@@ -28,72 +28,70 @@
 
 ```
 
-## Settings 标签属性
+## Settings tag attribute
 
-| 属性           |    说明   |
-| :---------     | --------:|
-| IsWatchConfigFile  | 是否监控配置文件,用于配置文件热更新,默认为 false |
-| ParameterPrefix | 全局参数前缀,默认使用 $ 适配所有DB |
-| IgnoreParameterCase | 忽略参数大小写 |
-| IsCacheEnabled| 是否开启缓存 |
-
----
-
-## Database 子标签
-
-| 标签           |    说明   |
-| :---------     | --------:|
-| DbProvider  | 各Db Client 的 DbProviderFactory 实现类 |
-| Write | 写库（必选） |
-| Read | 读库（可选） |
-
-### DbProvider 标签
-
-| 属性           |    说明   |
-| :---------     | --------:|
-| Name  | 名称标识,可用于**Env**标签的DB环境识别 |
-| ParameterPrefix | 参数前缀:[SqlServer:@ ; MySQL:? ; Oracle::] |
-| Type | 类型 |
-
-### Write 标签
-
-| 属性           |    说明   |
-| :---------     | --------:|
-| Name  | 名称标识 |
-| ConnectionString | 数据库链接字符串 |
-
-### Read 标签
-
-| 属性           |    说明   |
-| :---------     | --------:|
-| Name  | 名称标识 |
-| ConnectionString | 数据库链接字符串 |
-| Weight | 权重 |
+| Attribute | Description |
+| :--------- | --------:|
+| IsWatchConfigFile | Whether to monitor configuration files for configuration file hot updates, defaults to false |
+| ParameterPrefix | Global parameter prefix, defaults to $ for all DBs |
+| IgnoreParameterCase | Ignore parameter case |
+| IsCacheEnabled| Whether to enable caching |
 
 ---
 
-## TypeHandlers 子标签
+## Database Subtag
 
-### TypeHandler 标签
+| Label | Description |
+| :--------- | --------:|
+| DbProvider | DbProviderFactory implementation class for each Db Client |
+Write | Write Library (Required) |
+| Read | Read Library (optional) |
 
-| 属性           |    说明   |
-| :---------     | --------:|
-| Name  | 名称标识 |
-| Type | 类型 |
+### DbProvider Tags
+
+| Attribute | Description |
+| :--------- | --------:|
+| Name | Name ID, DB environment recognition for **Env** tags |
+| ParameterPrefix | Parameter Prefix: [SqlServer:@ ; MySQL:? ; Oracle::] |
+| Type | Type |
+
+### Write Tags
+
+| Attribute | Description |
+| :--------- | --------:|
+| Name | Name Identification |
+| ConnectionString | Database Link String |
+
+### Read Tags
+
+| Attribute | Description |
+| :--------- | --------:|
+| Name | Name Identification |
+| ConnectionString | Database Link String |
+| Weight | Weight |
 
 ---
 
-## SmartSqlMaps 子标签
+## TypeHandlers Subtag
 
-| 标签           |    说明   |
-| :---------     | --------:|
-| SmartSqlMap  | 用于定位SmartSqlMap文件位置 |
+### TypeHandler tag
 
-### SmartSqlMap 标签
-
-| 属性           |    说明   |
-| :---------     | --------:|
-| Path  | 用于定位 SmartSqlMap 文件/目录 位置 |
-| Type | 枚举类型:File/Directory,File:为文件资源;Directory:为目录资源,取该目录下所有Map文件 |
+| Attribute | Description |
+| :--------- | --------:|
+| Name | Name Identification |
+| Type | Type |
 
 ---
+
+## SmartSqlMaps Subtag
+
+| Label | Description |
+| :--------- | --------:|
+| SmartSqlMap | Used to locate the location of SmartSqlMap files |
+
+### SmartSqlMap tag
+
+| Attribute | Description |
+| :--------- | --------:|
+| Path | Used to locate SmartSqlMap files/directories Location |
+| Type | Enumeration type: File/Directory, File: is a file resource; Directory: is a directory resource, take all Map files under this directory |

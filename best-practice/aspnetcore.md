@@ -1,29 +1,29 @@
-# SmartSql 最佳实践
+# SmartSql Best Practices
 
-## 常规操作
+## Regular operation
 
-### 安装 SmartSql
+### Installing SmartSql
 
 ``` powershell
 Install-Package SmartSql
 ```
 
-### 安装 SmartSql.DIExtension
+### Install SmartSql.DIExtension
 
 ``` powershell
 Install-Package SmartSql.DIExtension
 ```
 
-### 配置SmartSqlConfig.xml
+### Configuring SmartSqlConfig.xml
 
-- 写库（Write）必选 唯一节点
-- 读库（Read）可选 多节点配置
+- Write library (Write) mandatory
+- Read library (Read) optional Multi-node configuration
 
-### 安装对应ADO.NET驱动
+### Install the corresponding ADO.NET driver
 
 #### MySql
 
-- 安装mysql 驱动 *Mysql.Data*
+- Install mysql driver *Mysql.Data*
 
 ``` powershell
 Install-Package Mysql.Data
@@ -42,7 +42,7 @@ Install-Package Mysql.Data
     <Read Name="ReadDB-1" ConnectionString="Data Source=.;database=SmartSqlDB-Read2;uid=SmartSql;pwd=Rocher2018;Charset=utf8;SslMode=none" Weight="20"/>
   </Database>
   <SmartSqlMaps>
-    <!--两种配置方式 推荐Directory模式-->
+    <!--Two configuration methods Recommended Directory mode -->
     <SmartSqlMap Path="Maps" Type="Directory"></SmartSqlMap>    
     <SmartSqlMap Path="Maps/T_User.xml" Type="File"></SmartSqlMap> 
   </SmartSqlMaps>
@@ -72,7 +72,7 @@ Install-Package Mysql.Data
 
 #### Postgresql
 
-- Postgresql 驱动 *Npgsql*
+- Postgresql driver *Npgsql*
 
 ``` powershell
 Install-Package Npgsql
@@ -104,33 +104,33 @@ Install-Package Npgsql
     });
 ```
 
-### 定义仓储接口
+### Defining a warehousing interface
 
 ``` csharp
-    /// <summary>
-    /// 属性可选： [SqlMap(Scope = "User")] ,不设置 则默认 Scope 模板：I{Scope}Repository
-    /// 可传入自定义模板
-    /// RepositoryBuilder builder=new RepositoryBuilder("I{Scope}DAL");
-    /// </summary>
-    public interface IUserRepository
-    {
-        /// <summary>
-        /// 属性可选 [Statement(Execute = ExecuteBehavior.Auto,Id = "Query")]
-        /// 默认 Execute：Auto ，自动判断 执行类型
-        /// 默认 Id : 方法名
-        /// </summary>
-        /// <param name="reqParams"></param>
-        /// <returns></returns>
-        IEnumerable<User> Query(object reqParams);
-        long GetRecord(object reqParams);
-        User Get(object reqParams);
-        long Insert(User entity);
-        int Update(User entity);
-        int Delete(User entity);
-    }
+     /// <summary>
+     /// Attribute optional: [SqlMap(Scope = "User")] , not set then default Scope template: I{Scope}Repository
+     /// can pass in a custom template
+     /// RepositoryBuilder builder=new RepositoryBuilder("I{Scope}DAL");
+     /// </summary>
+     Public interface IUserRepository
+     {
+         /// <summary>
+         /// Attribute optional [Statement(Execute = ExecuteBehavior.Auto,Id = "Query")]
+         /// Default Execute:Auto , automatically judges the execution type
+         /// Default Id : method name
+         /// </summary>
+         /// <param name="reqParams"></param>
+         /// <returns></returns>
+         IEnumerable<User> Query(object reqParams);
+         Long GetRecord(object reqParams);
+         User Get(object reqParams);
+         Long Insert(User entity);
+         Int Update(User entity);
+         Int Delete(User entity);
+     }
 ```
 
-### 尽情享用
+### Enjoy yourself
 
 ``` csharp
 using SmartSql.Abstractions;

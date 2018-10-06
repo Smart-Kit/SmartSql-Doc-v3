@@ -1,47 +1,47 @@
 ---
-seo_title: 动态代理仓储介绍
+seo_title: Dynamic Agent Repository Introduction
 ---
 
-# 动态代理仓储
+# Dynamic Agent Repository
 
-## 简介
+## Introduction
 
-动态代理仓储(SmartSql.DyRepository)组件是SmartSql非常独特的功能，它能简化SmartSql的使用。对业务代码除了配置几乎没有侵入。可以说使用SmartSqlContainer是原始方法，而DyRepository自动帮你实现这些方法。
+The Dynamic Repository (SmartSql.DyRepository) component is a very unique feature of SmartSql that simplifies the use of SmartSql. There is almost no intrusion in the configuration of the business code. It can be said that using SmartSqlContainer is the original method, and DyRepository automatically implements these methods for you.
 
-DyRepository的表现是只需要定义仓储接口，通过简单配置就能自动实现这些接口并注册到IoC容器中，使用时注入即刻获取实现。原理是通过接口和接口方法的命名规则来获取SmartSql的xml文件中的Scope和SqlId，用接口方法的参数作为Request，通过xml中的sql自动判断是查询还是执行操作，最后实现对ISmartSqlMapper的调用。
+The performance of DyRepository is that you only need to define the warehousing interface. These interfaces can be automatically implemented and registered in the IoC container through simple configuration. The principle is to obtain the Scope and SqlId in the xml file of SmartSql through the naming rules of the interface and the interface method, and use the parameters of the interface method as the Request, and automatically determine whether the query or the execution operation is performed by the sql in the xml, and finally realize the call to the ISmartSqlMapper.
 
-## 适合场景
+## Suitable for the scene
 
-1. 使用了仓储模式的架构
+1. Architecture using Repository mode
 
-仓储模式主要在DDD战术中运用，用来隔离领域和数据库。DyRepository的功能需求主要是在DDD的实践中发现的，目前为止已经满足DDD实践的大部分需求，如果还有其他的相关需求欢迎提出Issue。
+The Repository model is mainly used in DDD tactics to isolate domains and databases. The functional requirements of DyRepository are mainly found in the practice of DDD. So far, most of the requirements of DDD practice have been met. If there are other related requirements, we welcome the issue.
 
-2. 类似SqlHepler的应用
+2. Applications like SqlHepler
 
-DyRepository可以将任意一个接口实现出查询数据库的工具，CURD方法不在话下。通过接口注入更能发挥解耦的作用。
+DyRepository can implement any tool to query the database, and the CURD method is no exception. The interface can be more decoupled through interface injection.
 
-## 使用介绍
+## Introduction for using
 
-下面会简单演示DyRepository与ISmartSqlMapper的使用对比。
+The following is a simple demonstration of the use of DyRepository and ISmartSqlMapper.
 
-### 准备工作
+### Ready to work
 
-1. 先创建一个仓储，这个仓储不依赖SmartSql，只是普普通通的仓储接口
+1. First create a Repository, this warehousing does not depend on SmartSql, just a common warehousing interface
 
 ``` csharp
-    //仓储接口，默认模版是I{Scope}Repository，所以这个接口的Scope是Activity
+    //Repository interface, the default template is I{Scope}Repository, so the scope of this interface is Activity
     public interface IActivityRepository
     {
-        //接口方法对应SqlId，所以这个方法的SqlId是Insert
-        //方法参数对应Request，所以这个方法的Request是activity
+        //The interface method corresponds to the SqlId, so the SqlId of this method is Insert.
+        //The method parameter corresponds to Request, so the Request of this method is activity
         int Insert(Activity activity);
 
-        //值类型的参数会自动封装为一个对象，所以这个方法的Request是new { activityId = activityId }
+        //The value type parameter is automatically encapsulated as an object, so the request for this method is new { activityId = activityId }
         Activity Query(long activityId);
     }
 ```
 
-2. 创建配置xml文件SmartSqlMapConfig.xml：
+2. Create a configuration xml file SmartSqlMapConfig.xml：
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -59,7 +59,7 @@ DyRepository可以将任意一个接口实现出查询数据库的工具，CURD�
 
 ```
 
-3. 再创建xml配置文件Activity.xml，放到Maps目录，并且在属性面板设置为“始终复制”:
+3. Then create the xml configuration file Activity.xml, put it in the Maps directory, and set it to "Always copy" in the properties panel:
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -92,13 +92,13 @@ DyRepository可以将任意一个接口实现出查询数据库的工具，CURD�
 </SmartSqlMap>
 ```
 
-准备工作完成，下面就可以展示两种用法的区别。
+The preparation is complete, and the differences between the two usages can be shown below.
 
-### 两种用法
+### Two usages
 
-#### ISmartSqlMapper 用法
+#### ISmartSqlMapper usage
 
-如果不用DyRepository，我们需要用ISmartSqlMapper实现这个仓储。
+If you don't use DyRepository, we need to implement this Repository with ISmartSqlMapper.
 
 ``` csharp
 
@@ -128,7 +128,7 @@ DyRepository可以将任意一个接口实现出查询数据库的工具，CURD�
     }
 ```
 
-再把实现类注册到IoC中:
+Then register the implementation class to the IoC:
 
 ``` csharp
 var services = new ServiceCollection();
@@ -137,7 +137,7 @@ var services.AddSingleton<IActivityRepository,ActivityRepository>();
 
 #### DyRepository
 
-如果使用DyRepository，我们只需配置一下IoC注册即可。
+If you use DyRepository, we only need to configure IoC registration.
 
 ``` csharp
     var services = new ServiceCollection();
@@ -147,12 +147,12 @@ var services.AddSingleton<IActivityRepository,ActivityRepository>();
     });
 ```
 
-#### 注入使用
+#### Injection use
 
-使用方法就注入接口，再调用接口方法了。
+Use the method to inject the interface, and then call the interface method.
 
 ``` csharp
-    // 假设ActivityService已经注册到IoC容器
+    // Assume that the ActivityService is already registered to the IoC container.
     public class ActivityService
     {
         IActivityRepository activityRepository;
@@ -175,8 +175,8 @@ var services.AddSingleton<IActivityRepository,ActivityRepository>();
 
 ```
 
-## 总结
+## summary
 
-通过DyRepository与ISmartSqlMapper的简单对比，我们就可以看出DyRepository的强大，为我们省下了很多代码。当然，ISmartSqlMapper自然也有它的灵活性，能够在任何地方使用。但是如果没有其他的特殊需求，在架构方面，因为对业务代码几乎无侵入，DyRepository无疑是最推荐的使用方式。
+Through the simple comparison between DyRepository and ISmartSqlMapper, we can see that the power of DyRepository saves us a lot of code. Of course, ISmartSqlMapper naturally has its flexibility to be used anywhere. But if there are no other special requirements, in terms of architecture, DyRepository is undoubtedly the most recommended way to use because there is almost no intrusion into the business code.
 
-本文只介绍了DyRepository默认约定的使用方法，其实它还能通过各种配置项去实现更灵活的功能。详情请看下一篇《DyRepository配置》。
+This article only introduces the use of the DyRepository default convention, in fact, it can also achieve more flexible functions through various configuration items. See the next article, DyRepository Configuration for details.
