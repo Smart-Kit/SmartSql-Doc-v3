@@ -1,17 +1,18 @@
 {
     "root": "./",
     "title": "SmartSql",
-    "description": "拥抱 跨平台 DotNet Core，是时候了。高性能、高生产力，超轻量级的ORM。SmartSql = MyBatis + Cache(Memory | Redis) + ZooKeeper + R/W Splitting +Dynamic Repository ......",
+    "description": "Embracing Cross-platform DotNet Core, it's time. High performance, high productivity, ultra-lightweight ORM.SmartSql = MyBatis + Cache(Memory | Redis) + ZooKeeper + R/W Splitting +Dynamic Repository ......",
     "author": "Ahoo Wang,ElderJames,RocherKong",
     "keywords": "SmartSql, MyBatis ,Cache(Memory | Redis) ,ZooKeeper , R/W Splitting , Dynamic Repository,ORM,DotNet,.Net,dotnet core",
     "language": "zh-hans",
     "links": {
         "sidebar": {
-            "SmartSql-GitHub": "https://github.com/Ahoo-Wang/SmartSql"
+            "SmartSql-GitHub": "https://github.com/Ahoo-Wang/SmartSql",
+            "SmartSql-Doc-CN": "https://doc.smartsql.net/"
         }
     },
     "plugins": [
-        "prism", "prism-themes", "-highlight", "github", "github-buttons", "anchor-navigation-ex", "copy-code-button", "rss", "favicon", "ga","sitemap"
+        "prism", "prism-themes", "-highlight", "github", "github-buttons", "anchor-navigation-ex", "copy-code-button", "rss", "favicon", "ga", "sitemap"
     ],
     "pluginsConfig": {
         "prism": {
@@ -20,8 +21,8 @@
             ]
         },
         "rss": {
-            "title": "SmartSql 使用教程",
-            "description": "拥抱 跨平台 DotNet Core，是时候了。高性能、高生产力，超轻量级的ORM。SmartSql = MyBatis + Cache(Memory | Redis) + ZooKeeper + R/W Splitting +Dynamic Repository ......",
+            "title": "SmartSql Use tutorial",
+            "description": "Embracing Cross-platform DotNet Core, it's time. High performance, high productivity, ultra-lightweight ORM.SmartSql = MyBatis + Cache(Memory | Redis) + ZooKeeper + R/W Splitting +Dynamic Repository ......",
             "author": "Ahoo Wang,ElderJames,RocherKong",
             "feed_url": "https://doc.smartsql.net/rss",
             "site_url": "https://doc.smartsql.net/",
